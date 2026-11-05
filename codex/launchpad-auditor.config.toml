@@ -1,0 +1,11 @@
+# Codex profile: read-only health check. Writes only LAUNCHPAD-HEALTH.md (by instruction).
+# Install: cp launchpad-auditor.config.toml ~/.codex/   then: codex exec -p launchpad-auditor "<prompt>"
+# Model names change: check ~/.codex/models_cache.json and update.
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
+sandbox_mode = "workspace-write"
+approval_policy = "never"
+
+# Docs lookups, npm version checks and live-site checks need the network.
+[sandbox_workspace_write]
+network_access = true

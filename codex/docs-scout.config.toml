@@ -1,0 +1,10 @@
+# Codex profile: official-docs fact checker (read-only, needs network for docs).
+# Install: cp docs-scout.config.toml ~/.codex/   then: codex exec -p docs-scout "<prompt>"
+model = "gpt-6-luna"
+model_reasoning_effort = "low"
+sandbox_mode = "workspace-write"
+approval_policy = "never"
+
+# Docs lookups, npm version checks and live-site checks need the network.
+[sandbox_workspace_write]
+network_access = true

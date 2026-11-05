@@ -1,0 +1,56 @@
+# CI for a website set up with website-launchpad.
+# Copy to .github/workflows/ci.yml. Assumes the skill's scripts are vendored
+# at scripts/launchpad/ and the package.json has lint, typecheck and build.
+# Uses npm; for pnpm add pnpm/action-setup and swap the commands.
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run typecheck --if-present
+
+      - name: Build
+        run: npm run build
+        env:
+          # Build-time values that are safe in CI. Add secrets in repo settings, never here.
+          SITE_URL: ${{ vars.SITE_URL }}
+          SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
+          SANITY_DATASET: ${{ vars.SANITY_DATASET }}
+
+      - name: Launchpad health check (fails on blockers)
+        run: node scripts/launchpad/launchpad-check.mjs . --report launchpad-check.md
+
+      - name: Upload health report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: launchpad-check
+          path: launchpad-check.md

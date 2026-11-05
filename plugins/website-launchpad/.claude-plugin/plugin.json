@@ -1,0 +1,6 @@
+{
+  "name": "website-launchpad",
+  "description": "Start and run a website the right way: starter questions, framework recommendation (Next.js, Astro, Nuxt, SvelteKit), official scaffolding, guided GitHub/Sanity/Vercel sign-ups and CLI connections, health checks against best practices, every claim cross-checked with official docs, taught in plain language.",
+  "author": { "name": "FlytBase Marketing" },
+  "keywords": ["website", "framework", "nextjs", "astro", "nuxt", "sveltekit", "sanity", "vercel", "boilerplate", "audit", "best-practices", "learning"]
+}

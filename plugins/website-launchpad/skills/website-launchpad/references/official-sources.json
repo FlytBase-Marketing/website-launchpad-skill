@@ -1,0 +1,84 @@
+{
+  "_comment": "Official, machine-readable documentation for each tool the launchpad guides. Checked 2026-11-05. launchpad-docs.mjs reads this file. 'index' is searched for the query; 'mcp' is the vendor's own docs server, preferred when the client has it connected. Add a source here, never a blog or a mirror.",
+  "sources": {
+    "nextjs": {
+      "name": "Next.js",
+      "home": "https://nextjs.org/docs",
+      "index": ["https://nextjs.org/docs/llms.txt"],
+      "pages": "Every docs page returns Markdown when fetched with Accept: text/markdown, or with .md appended.",
+      "versioned": "The index header states @doc-version. Compare it with the project's installed version.",
+      "mcp": { "name": "next-devtools", "type": "stdio", "command": "npx", "args": ["-y", "next-devtools-mcp@latest"], "note": "Official (vercel/next-devtools-mcp). Docs search plus live errors, routes and logs from a running next dev (16+)." },
+      "upgrade": "https://nextjs.org/docs/app/guides/upgrading"
+    },
+    "react": {
+      "name": "React",
+      "home": "https://react.dev",
+      "index": ["https://react.dev/llms.txt"]
+    },
+    "astro": {
+      "name": "Astro",
+      "home": "https://docs.astro.build/en/getting-started/",
+      "index": ["https://docs.astro.build/sitemap-0.xml"],
+      "indexFilter": "/en/",
+      "pages": "No llms.txt. Pages are HTML; the script strips them to text. Prefer the MCP server.",
+      "mcp": { "name": "astro-docs", "type": "http", "url": "https://mcp.docs.astro.build/mcp", "note": "Official Astro Docs MCP. No auth." },
+      "upgrade": "https://docs.astro.build/en/upgrade-astro/"
+    },
+    "nuxt": {
+      "name": "Nuxt",
+      "home": "https://nuxt.com/docs",
+      "index": ["https://nuxt.com/llms.txt"],
+      "pages": "Append .md to a page URL or send Accept: text/markdown.",
+      "mcp": { "name": "nuxt", "type": "http", "url": "https://nuxt.com/mcp", "note": "Official Nuxt MCP. No auth." },
+      "upgrade": "https://nuxt.com/docs/getting-started/upgrade"
+    },
+    "sveltekit": {
+      "name": "SvelteKit and Svelte",
+      "home": "https://svelte.dev/docs/kit",
+      "index": ["https://svelte.dev/docs/kit/llms.txt", "https://svelte.dev/docs/svelte/llms.txt", "https://svelte.dev/docs/cli/llms.txt"],
+      "pages": "The llms.txt files are the full docs as one text; the script searches their sections.",
+      "mcp": { "name": "svelte", "type": "http", "url": "https://mcp.svelte.dev/mcp", "note": "Official Svelte MCP (docs sections plus a Svelte 5 code autofixer). No auth." },
+      "upgrade": "https://svelte.dev/docs/kit/migrating-to-sveltekit-2"
+    },
+    "sanity": {
+      "name": "Sanity",
+      "home": "https://www.sanity.io/docs",
+      "index": ["https://www.sanity.io/docs/llms.txt"],
+      "followIndexes": true,
+      "pages": "Append .md to a page URL or send Accept: text/markdown.",
+      "mcp": { "name": "sanity", "type": "http", "url": "https://mcp.sanity.io", "note": "Official. OAuth sign-in. Docs search, schema, GROQ and content tools. `sanity init` sets it up together with Sanity's agent skills." },
+      "agentSetup": "https://www.sanity.io/docs/getting-started/ai-coding-agents"
+    },
+    "vercel": {
+      "name": "Vercel",
+      "home": "https://vercel.com/docs",
+      "index": ["https://vercel.com/docs/sitemap.md"],
+      "pages": "Append .md to a docs URL.",
+      "mcp": { "name": "vercel", "type": "http", "url": "https://mcp.vercel.com", "note": "Official. OAuth sign-in. Docs search plus projects, deployments and logs." },
+      "agentSetup": "https://vercel.com/get-started.md",
+      "plugin": "npx plugins add vercel/vercel-plugin"
+    },
+    "tailwind": {
+      "name": "Tailwind CSS",
+      "home": "https://tailwindcss.com/docs",
+      "index": [],
+      "pages": "No machine index. Fetch a docs page URL directly (HTML, stripped to text)."
+    },
+    "google-search": {
+      "name": "Google Search Central",
+      "home": "https://developers.google.com/search/docs",
+      "index": [],
+      "pages": "Authoritative for SEO rules (sitemaps, robots, canonical, structured data). Fetch pages directly."
+    },
+    "web-dev": {
+      "name": "web.dev (Core Web Vitals, accessibility)",
+      "home": "https://web.dev/articles/vitals",
+      "index": []
+    },
+    "mdn": {
+      "name": "MDN Web Docs (HTML, CSS, accessibility, headers)",
+      "home": "https://developer.mozilla.org/en-US/docs/Web",
+      "index": []
+    }
+  }
+}

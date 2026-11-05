@@ -1,0 +1,12 @@
+{
+  "name": "flytbase-website-launchpad",
+  "description": "FlytBase website launchpad skill and agents",
+  "owner": { "name": "FlytBase Marketing" },
+  "plugins": [
+    {
+      "name": "website-launchpad",
+      "source": "./plugins/website-launchpad",
+      "description": "A teaching co-pilot that picks the framework, scaffolds it with official tools, guides GitHub/Sanity/Vercel sign-ups from the CLI, and keeps running best-practice health checks backed by official docs."
+    }
+  ]
+}
